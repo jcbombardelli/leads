@@ -21,16 +21,14 @@ module.exports = function(app, _db) {
         try {
                         
             var collection = _db.collection('leads')
+            collection.save(req.body);
 
-            collection.save(req.body)
-                .then(function(result) {
-                    res.status(200).send(result);
-                })
-                .catch(function(error) {
-                    console.log(error);
-                    res.status(500).send(error);
-                })
+            res.send(200);
 
+                //.then(function(result) {
+                //    res.statusCode(200).send(res.statusCode);
+                //})
+                
         } catch (error) {
             res.status(500).send(error);
 
