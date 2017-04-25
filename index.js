@@ -6,7 +6,10 @@ var _db = null
 
 var app = express()
 
-app.use(bodyParser.json())
+var jsonParser       = bodyParser.json({limit:1024*1024*20, type:'application/json'});
+var urlencodedParser = bodyParser.urlencoded({ extended:true,limit:1024*1024*20,type:'application/x-www-form-urlencoding' })
+app.use(jsonParser);
+app.use(urlencodedParser)
 
 
 app.listen(process.env.PORT || 3000, function() {
